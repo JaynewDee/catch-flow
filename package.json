@@ -1,18 +1,19 @@
 {
   "name": "catch-flow",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "",
-  "main": "index.js",
+  "exports": "./index.js",
   "type": "module",
   "scripts": {
-    "run": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^1.2.2",
-    "dotenv": "^16.0.3"
-  }
+  "keywords": [
+    "try",
+    "catch",
+    "async",
+    "functional",
+    "decorator"
+  ],
+  "author": "Joshua Newell Diehl",
+  "license": "MIT"
 }

@@ -1,53 +1,46 @@
+const error = (func, error) => {
+  const funk = func.toString();
+
+  typeof funk === "string"
+    ? console.log(
+        `||| Error @ wrapped function: |||\n:::\n${funk}\n:::\n`,
+        error
+      )
+    : console.error(`||| Unable to stringify function signature |||`, error);
+  return error;
+};
+
 const TryCatch =
   (fn) =>
   (...fnArgs) => {
     try {
       return fn(...fnArgs);
     } catch (err) {
-      const funk = fn.toString();
-
-      typeof funk === "string"
-        ? console.error(
-            `||| Error @ wrapped function: |||\n:::\n${fn.toString()}\n:::\n`,
-            err
-          )
-        : console.error(`||| Unable to stringify function signature |||`, err);
+      error(fn, err);
     }
   };
 
-const AsyncTryCatch = async (fn, ...fnArgs) => {
-  try {
-    return await fn(...fnArgs);
-  } catch (err) {
-    const funk = fn.toString();
+const AsyncTryCatch =
+  (fn) =>
+  async (...fnArgs) => {
+    try {
+      return await fn(...fnArgs);
+    } catch (err) {
+      error(fn, err);
+    }
+  };
 
-    typeof funk === "string"
-      ? console.error(
-          `||| Error @ wrapped function: |||\n:::\n${fn.toString()}\n:::\n`,
-          err
-        )
-      : console.error(`||| Unable to stringify function signature |||`, err);
-  }
-};
+const Sync =
+  (fn) =>
+  (...fnArgs) =>
+    TryCatch(fn)(...fnArgs);
 
-// /**
-//  *
-//  * @param {Function} fn function to be try-catch wrapped
-//  * @param {any} fnArgs arguments to wrapped function
-//  * @returns
-//  */
-export const Sync = (fn) => (fnArgs) => TryCatch(fn)(fnArgs);
-
-// /**
-//  *
-//  * @param {Function} promiseFn function to be wrapped
-//  * @param {any} fnArgs arguments to promise function
-//  * @returns {Promise}
-//  */
-export const Async = (promiseFn) => async (fnArgs) =>
-  await AsyncTryCatch(promiseFn, fnArgs);
+const Async =
+  (promiseFn) =>
+  async (...fnArgs) =>
+    await AsyncTryCatch(promiseFn)(...fnArgs);
 
 export const Catch = () => ({
-  catchSync: Catch,
+  catchSync: Sync,
   catchAsync: Async
 });
