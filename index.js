@@ -1,7 +1,4 @@
-import { Catch } from "./catch.js";
-import { Flow } from "./flow.js";
+import { Sync as catchSync, Async as catchAsync } from "./catch.js";
+import { catchMap, catchFlow } from "./flow.js";
 
-export default {
-  ...Catch(),
-  ...Flow()
-};
+export { catchSync, catchAsync, catchMap, catchFlow };

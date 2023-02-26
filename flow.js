@@ -1,8 +1,6 @@
-import { Catch } from "./catch.js";
+import { Sync as catchSync, Async as catchAsync } from "./catch.js";
 
-const { catchSync, catchAsync } = Catch();
-
-const AsyncMap =
+const catchMap =
   (fns) =>
   async (...args) => {
     return await fns.reduce(async (acc, fn, idx) => {
@@ -11,12 +9,9 @@ const AsyncMap =
     }, []);
   };
 
-const CatchFlow =
+const catchFlow =
   (...fns) =>
   (val) =>
     fns.reduce((prev, fn) => catchSync(fn)(prev), val);
 
-export const Flow = () => ({
-  catchMap: AsyncMap,
-  catchFlow: CatchFlow
-});
+export { catchMap, catchFlow };

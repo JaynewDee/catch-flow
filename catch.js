@@ -40,7 +40,4 @@ const Async =
   async (...fnArgs) =>
     await AsyncTryCatch(promiseFn)(...fnArgs);
 
-export const Catch = () => ({
-  catchSync: Sync,
-  catchAsync: Async
-});
+export { Sync, Async };
