@@ -1,6 +1,6 @@
 {
   "name": "catch-flow",
-  "version": "1.0.5",
+  "version": "1.0.9",
   "description": "",
   "exports": "./index.js",
   "type": "module",

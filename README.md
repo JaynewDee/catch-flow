@@ -53,11 +53,25 @@ Or wrap and define at once:
 
 ## _catchAsync_
 
-> > > ### _**catchAsync**_ is great for slimming down and simplifying modules that are asynchronous by nature:
+> > > ### _**catchAsync**_ wraps a Promise-returning function. This is it's only functional difference from catchSync.
 
-```javascript
-
-```
+> ```javascript
+> const asyncJob = catchAsync(
+>   (msg) =>
+>     new Promise((resolve, reject) => {
+>       resolve(`Echo: ${msg}`);
+>       if (!msg) {
+>         reject("Promise rejected.");
+>       }
+>     })
+> );
+>
+> const res = await asyncJob("echo echo ... ");
+> console.log(res);
+>
+> const rejected = await asyncJob("");
+> console.log(rejected);
+> ```
 
 ---
 
