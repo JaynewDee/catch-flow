@@ -1,4 +1,4 @@
-const error = (func, error) => {
+const logError = (func, error) => {
   const funk = func.toString();
 
   typeof funk === "string"
@@ -16,7 +16,7 @@ const TryCatch =
     try {
       return fn(...fnArgs);
     } catch (err) {
-      error(fn, err);
+      logError(fn, err);
     }
   };
 
@@ -26,7 +26,7 @@ const AsyncTryCatch =
     try {
       return await fn(...fnArgs);
     } catch (err) {
-      error(fn, err);
+      logError(fn, err);
     }
   };
 

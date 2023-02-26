@@ -13,9 +13,8 @@ const AsyncMap =
 
 const CatchFlow =
   (...fns) =>
-  (val) => {
-    fns.reduce(async (prev, fn) => catchSync(fn)(prev), val);
-  };
+  (val) =>
+    fns.reduce((prev, fn) => catchSync(fn)(prev), val);
 
 export const Flow = () => ({
   catchMap: AsyncMap,
