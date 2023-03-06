@@ -1,18 +1,17 @@
 {
   "name": "catch-flow",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
-  "exports": "./index.js",
+  "main": "dist/index.js",
+  "exports": "./dist/index.js",
   "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "typings": "dist/index.d.ts",
   "keywords": [
     "try",
     "catch",
     "async",
-    "functional",
-    "decorator"
+    "decorator",
+    "functional"
   ],
   "author": "Joshua Newell Diehl",
   "license": "MIT"
